@@ -1,0 +1,21 @@
+{
+  "name": "rcd",
+  "version": "0.0.0",
+  "description": "a database for red chamber dreams",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "red",
+    "chamber",
+    "dreams",
+    "roles"
+  ],
+  "author": "ronfe",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.1",
+    "mongoose": "^4.0.7"
+  }
+}
