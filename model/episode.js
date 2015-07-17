@@ -8,7 +8,7 @@ var ObjectId = Schema.Types.ObjectId;
 var episodeSchema = new Schema({
     order: Number,
     title: String,
-    length: Number
+    length: {type: Number, default: 0}
 }, {collection: 'episodes'});
 
 mongoose.model('Episode', episodeSchema);

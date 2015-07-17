@@ -26,6 +26,18 @@ exports.create = function (req, res) {
     });
 };
 
+exports.updateLength = function(req, res){
+    var order = req.params.border;
+    var len = req.params.newLen;
+    Episode.update({order: order}, {length: len}, function(err){
+        if (err){
+            res.status(500);
+            console.error(err);
+        }
+        res.send('succeeded');
+    });
+};
+
 exports.findById = function (req, res) {
     var pId = req.params.id;
     Episode.findOne({_id: pId}, function (err, result) {

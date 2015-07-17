@@ -13,8 +13,8 @@ var peopleSchema = new Schema({
     desc: [
         {
             content: String,
-            source: [{type: Number}]
-
+            source: [{type: Number}],
+            relation: {type: ObjectId, rel: 'People'}
         }
     ],
     work: [

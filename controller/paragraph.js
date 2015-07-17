@@ -3,6 +3,7 @@
  */
 var mongoose = require('mongoose');
 var Paragraph = mongoose.model('Paragraph');
+var Episode = mongoose.model('Episode');
 
 exports.create = function(req, res){
     var data = req.body;
@@ -12,7 +13,21 @@ exports.create = function(req, res){
             res.status(500);
             console.error(err);
         }
-        res.send('succeeded');
+        Episode.findOne({order: paragraph.episode}, function(err, result){
+            if (err){
+                res.status(500);
+                console.error(err);
+            }
+            if (result.length < paragraph.position){
+                Episode.update({order: paragraph.episode}, {length: paragraph.position}, function(err){
+                    if (err){
+                        res.status(500);
+                        console.error(err);
+                    }
+                    res.send('succeeded');
+                });
+            }
+        });
     });
 };
 

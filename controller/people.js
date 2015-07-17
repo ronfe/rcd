@@ -26,6 +26,32 @@ exports.create = function (req, res) {
     });
 };
 
+exports.updateDesc = function(req, res){
+    var data = req.body;
+    var pid = req.params.id;
+
+    People.findOneAndUpdate({_id: pid}, {$push: {desc: data}}, function(err){
+        if (err){
+            res.status(500);
+            console.error(err);
+        }
+        res.send('succeeded');
+    });
+};
+
+exports.updateAlias = function(req, res){
+    var data = req.params.newName;
+    var pid = req.params.id;
+
+    People.findOneAndUpdate({_id: pid}, {$push: {alias: data}}, function(err){
+        if (err){
+            res.status(500);
+            console.error(err);
+        }
+        res.send('succeeded');
+    });
+};
+
 exports.findOne = function (req, res) {
     pId = req.params.id;
     People.findOne({_id: pId}, function (err, result) {
