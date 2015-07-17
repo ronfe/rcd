@@ -6,7 +6,7 @@ var router = express.Router();
 var people = require('./controller/people');
 var bodyParser = require('body-parser');
 
-router.get('/', function(req, res){
+router.get('/', function (req, res) {
     res.end('hello');
 });
 

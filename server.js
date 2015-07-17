@@ -14,7 +14,7 @@ mongoose.connection.on('connected', function () {
     console.log('db connected!');
 
     fs.readdirSync(__dirname + '/model').forEach(function (file) {
-        if (~file.indexOf('.js')){
+        if (~file.indexOf('.js')) {
             var filePath = __dirname + '/model/' + file;
             require(filePath);
         }
