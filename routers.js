@@ -5,7 +5,7 @@ var express = require('express');
 var router = express.Router();
 var people = require('./controller/people');
 var episode = require('./controller/episode');
-
+var paragraph = require('./controller/paragraph');
 
 router.get('/', function (req, res) {
     res.end('hello');
@@ -22,5 +22,10 @@ router.post('/episode', episode.create);
 router.get('/episode', episode.listAll);
 router.get('/episode/:id', episode.findById);
 router.get('/episode/order/:order', episode.findByOrder);
+
+//API of parapraph
+router.post('/paragraph', paragraph.create);
+router.get('/paragraph/one/:episode/:para', paragraph.findByEpisodeAndPara);
+router.get('/paragraph/all/:episode', paragraph.findByEpisode);
 
 module.exports = router;
