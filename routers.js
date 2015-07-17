@@ -7,6 +7,7 @@ var people = require('./controller/people');
 var episode = require('./controller/episode');
 var paragraph = require('./controller/paragraph');
 var comment = require('./controller/comment');
+var saying = require('./controller/saying');
 
 router.get('/', function (req, res) {
     res.end('hello');
@@ -36,5 +37,9 @@ router.get('/paragraph/all/:episode', paragraph.findByEpisode);
 router.post('/comment', comment.create);
 router.get('/comment/receive/:pid', comment.findByReceiver);
 router.get('/comment/bidirection/:sender/:receiver', comment.findByRelationship);
+
+//API of saying
+router.get('/saying/send/:episode/:sender', saying.findBySender);
+router.get('/saying/bidirection/:episode/:sender/:receiver', saying.findByRelationship);
 
 module.exports = router;
