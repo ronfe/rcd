@@ -25,3 +25,27 @@ exports.create = function (req, res) {
         res.send('succeeded');
     });
 };
+
+exports.findOne = function (req, res) {
+    pId = req.params.id;
+    People.findOne({_id: pId}, function (err, result) {
+        if (err) {
+            res.status(500);
+            console.error(err);
+        }
+        res.status(200).json(result);
+    });
+};
+
+exports.findByName = function (req, res) {
+    searchName = req.params.name;
+    People.findOne({name: searchName}, function (err, result) {
+        if (err) {
+            res.status(500);
+            console.error(err);
+        }
+
+        res.status(200).json(result);
+
+    });
+};
